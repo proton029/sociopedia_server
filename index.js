@@ -1,4 +1,4 @@
-import { Express } from "express";
+import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
@@ -13,8 +13,8 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);// to grab the fileurl
 const __dirname = path.dirname(__filename)// these two statements are required only when you add module as type in package.json
 dotenv.config();// to use .env files
-const app = Express();
-app.use(Express.json())
+const app = express();
+app.use(express.json())
 app.use(helmet())
 app.use(helmet.crossOriginResourcePolicy({policy:"cross-origin"}))
 app.use(morgan("common"))
@@ -33,5 +33,16 @@ const storage = multer.diskStorage({
     }
 })
 const upload = multer({storage})
+
+/* MONGOOSE */
+const PORT = process.env.PORT || 6001;
+mongoose.connect(process.env.MONGO_URL,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(()=>{
+    app.listen(PORT,() => console.log(`SERVER PORT:${PORT}`))
+}).catch((error)=>{
+    console.log(`error ${error}`)
+})
 
 

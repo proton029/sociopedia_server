@@ -8,6 +8,7 @@
     "gridfs-stream": "^1.1.1",
     "helmet": "^7.0.0",
     "jsonwebtoken": "^9.0.1",
+    "mongodb": "^5.7.0",
     "mongoose": "^7.4.3",
     "morgan": "^1.10.0",
     "multer-gridfs-storage": "^5.0.2"
@@ -15,8 +16,7 @@
   "name": "server",
   "version": "1.0.0",
   "main": "index.js",
-  "type":"module",
-  "devDependencies": {},
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
